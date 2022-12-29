@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>
+        윈도우 전역 객체 소속의 메서드
+    </h1>
+    <ul>
+        <li>
+            open(), close().. : 윈도우 창 관련 메서드
+        </li>
+        <li>
+            prompt(), alert(), confirm() : 사용자 interface 메서드
+        </li>
+        <li>
+            setTimeout(), setInterval() : 실행시간 지정 메서드
+        </li>
+        <li>
+            window.open('url', 'window name', 'options(size, scroll ...)')
+        </li>
+    </ul>
+    <button type="button" onclick="openWindow()">열기</button>
+    <button type="button" onclick="closeWindow()">닫기</button>
+    <button type="button" onclick="checkWindow()">체크</button>
+    <button type="button" onclick="openAlert()">window.alert()</button>
+    <button type="button" onclick="openPrompt()">window.prompt()</button>
+    <button type="button" onclick="openConfirm()">window.confirm()</button>
+    <h1 id="msg"></h1>
+    <script>
+
+        // 메세지 창 띄우는 기능
+        function openAlert(){
+            window.alert('지금도 자주 쓰이는 alert기능');
+        }
+        
+        // 입력을 받아오는 기능
+        function openPrompt(){
+            let info = window.prompt('값을 입력해주세요','초기값');
+            if(info != null){
+                document.getElementById('msg').innerText = info + '을 입력했습니다.';
+            }
+        }
+
+        // 확인 or 취소 선택하는 기능
+        function openConfirm(){
+            let choice = window.confirm('선택해주세요.');
+            if(choice == true){
+                document.getElementById('msg').innerText = "확인을 선택하셨습니다.";
+            } else {
+                document.getElementById('msg').innerText = "취소를 선택하셨습니다";
+            }
+        }
+
+
+
+
+
+
+        let myWin;
+
+        // window 열기
+        function openWindow(){
+            myWin = window.open("","myWin","width = 400, height = 400");
+        }
+
+        // window 닫기
+        function closeWindow(){
+            if(myWin){ // true : 열려있다면
+                myWin.close();
+            }
+        }
+
+        // window 창 체크
+        function checkWindow(){
+            if(!myWin){ // false : 닫혀있다면
+                document.getElementById('msg').innerText = 'myWin가 한 번도 열리지 않았습니다.';
+            } else{
+                if(myWin.closed){ // 열렸다가 닫혔다면
+                    document.getElementById('msg').innerText = 'myWin가 닫혔습니다.';
+                } else{
+                    document.getElementById('msg').innerText = 'myWin가 닫히지 않았습니다.';
+                }
+
+            }
+        }
+    </script>
+</body>
+</html>

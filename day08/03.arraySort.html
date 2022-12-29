@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array Sort</title>
+</head>
+<body>
+    <h1>
+        배열의 정렬은 ★ 문자기반 ★ 으로 정렬이 됨.
+    </h1>
+    <ul>
+        <li>
+            array.sort() : 순차(오름차순) 정렬
+        </li>
+        <li>
+            array.reverse() : 역순(내림차순) 정렬
+        </li>
+        <li>
+            정렬할 배열의 원소가 ★ 숫자 ★ 일 경우 콜백함수를 이용하여 내부 연산기법을 활용하여 정렬
+        </li>
+        <li>
+            array.sort(function(a,b){return a - b};) : 숫자 순차정렬 <br>
+            array.sort(function(a,b){return b - a};) : 숫자 역순정렬 <br>
+        </li>
+        <li>
+            1~45까지 랜덤 숫자를 6개 생성하여 배열에 저장한 후 순차 정렬 => 출력
+        </li>
+    </ul>
+    <script>
+        const random = [];
+        for(let i=0; i<6; i++){
+            let num = Math.floor(Math.random()*45)+1;
+            random[i] = num;
+        }
+        console.log(random);
+        
+        // array.sort(function(a,b){return a - b}) : 숫자순차정렬
+        random.sort(function(a,b){
+            return a - b;
+        });
+        console.log(random);
+
+        const cars = [
+            {type: "Volvo", year: 2016},
+            {type: "BMW", year: 2020},
+            {type: "KIA", year: 2018}
+        ];
+
+        // year(연도) 기준으로 정렬
+        cars.sort(function(a,b){
+            return a.year - b.year;
+        });
+        console.log(cars);
+
+        // 객체 안의 type(문자열) 값을 기준으로 정렬
+        cars.sort(function(a,b){
+            let x = a.type.toLowerCase();
+            let y = b.type.toLowerCase();
+            if(x>y){return 1;}
+            if(x>y){return -1;}
+            return 0;
+        });
+        console.log(cars);
+
+        // 배열의 값을 문자, 숫자 형태로 객체로 저장 => 역순정렬
+        const miyeon = [
+            {type: "Kang mi yeon", age: 28},
+            {type: "Seong si hun", age: 27}
+        ];
+        
+        // 이름 기준으로 역정렬
+        miyeon.sort(function(a,b){
+            let x = a.type.toLowerCase();
+            let y = b.type.toLowerCase();
+            if(x>y){return -1;}
+            if(x<y){return 1;}
+            return 0;
+        });
+        console.log(miyeon);
+
+        // 나이 기준으로 역정렬
+        miyeon.sort(function(a,b){
+            return b.age - a.age;
+        });
+        console.log(miyeon);
+    </script>
+</body>
+</html>

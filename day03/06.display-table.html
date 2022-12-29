@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>display-table</title>
+    <style>
+        /* 모든 태그 */
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .boxwrap{
+            /* display 형태를 표처럼 만들겠다 */
+            display: table;
+            width: 100%;
+            /* 테이블 고정 */
+            table-layout: fixed;
+        }
+        .boxwrap .box{
+            /* 부모 속성(table) 안에 들어가는 셀 (표 안의 셀) 형태 */
+            display: table-cell;
+            /* 세로 가운데 정렬 상태 */
+            vertical-align: middle;
+            text-align: center;
+            padding: 10px;
+        }
+        .thumb img{
+            width: 70%;
+        }
+        .title_item{
+            display: block;
+            font-size: 1em;
+        }
+        .desc_item{
+            font-size: 0.7em;
+        }
+        .price{
+            font-size: 0.9em;
+            font-weight: 700;
+        }
+        .title_item, .desc_item{
+            margin-top: 10px;
+        }
+        .box .link{
+            text-decoration: none;
+            color: black;
+        }
+        .box .link:hover{
+            text-decoration: underline;
+        }
+        img:hover{
+            transform: scale(1.2,1.2);
+
+        }
+    </style>
+</head>
+<body>
+    <div class="boxwrap">
+        <!-- 각각의 box들 추가 -->
+        <!-- 첫 번째 박스 set -->
+        <div class="box">
+            <a href="https://timemecca.com/product/detail.html?product_no=41265&srvc_anl=gcs_ssc_c000000288&gclid=CjwKCAjw2OiaBhBSEiwAh2ZSP6AIkBAEULiMARt7-UeL4IpjNI9mUSc5HJCeGD5EqD9YtXVZjzDjkRoCY34QAvD_BwE" target="_blank" class="link">
+                <span class="thumb">
+                    <img src="/image/솔트워터.jfif" alt="신발">
+                </span>
+                <strong class="title_item">솔트워터 오리지널</strong>
+                <p class="desc_item">여름에 시원한 샌들</p>
+                <p class="price">49,900</p>
+            </a>
+        </div>
+        <!-- 두 번째 박스 시작점 -->
+        <div class="box">
+            <a href="#" class="link">
+                <span class="thumb">
+                    <img src="/image/샌들2.jfif" alt="신발">
+                </span>
+                <strong class="title_item">블랙 샌들</strong>
+                <p class="desc_item">여름에 시원한 샌들</p>
+                <p class="price">37,000</p>
+            </a>
+        </div>
+        <!-- 세 번째 박스 시작점 -->
+        <div class="box">
+            <a href="#" class="link">
+                <span class="thumb">
+                    <img src="/image/샌들3.jfif" alt="신발">
+                </span>
+                <strong class="title_item">베이지 샌들</strong>
+                <p class="desc_item">여름에 시원한 샌들</p>
+                <p class="price">21,000</p>
+            </a>
+        </div>
+        <!-- 네 번째 박스 시작점 -->
+        <div class="box">
+            <a href="#" class="link">
+                <span class="thumb">
+                    <img src="/image/샌들4.jfif" alt="신발">
+                </span>
+                <strong class="title_item">화이트 샌들</strong>
+                <p class="desc_item">여름에 시원한 샌들</p>
+                <p class="price">40,000</p>
+            </a>
+        </div>
+    </div>
+</body>
+</html>

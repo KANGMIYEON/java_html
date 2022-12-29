@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>계산기 만들기</h1>
+    숫자 2개와 연산자를 입력받아 연산의 결과를 출력 <br>
+    입력받는 input 2개 <br>
+    연산자 button + - * / <br>
+    결과창 h3 두 수의 연산결과 출력 <br>
+    <div class="container">
+        <p>
+            <input type="text" id="num1" placeholder="숫자를 입력해주세요.">
+            <input type="text" id="num2" placeholder="숫자를 입력해주세요.">
+            <button type="button" id="+" value="+">+</button>
+            <button type="button" id="-" value="-">-</button>
+            <button type="button" id="*" value="*">*</button>
+            <button type="button" id="/" value="/">/</button>
+            <button type="button" id="=">=</button>
+        </p>
+        <h3 id="result"></h3>
+    </div>
+    <script>
+        // e의 역할 : 클릭의 값을 변수로 받음
+        document.querySelector('.container').addEventListener('click', function (e) {
+            let btnVal = e.target.value; // e가 가져온 target의 value값
+            console.log(btnVal);
+            let num1 = Number(document.getElementById("num1").value);
+            let num2 = Number(document.getElementById("num2").value);
+            let result = operation(btnVal);
+            document.getElementById('=').addEventListener('click', function () {
+                document.getElementById('result').innerText = result;
+            })
+        })
+
+        function operation(o) {
+            let f = parseInt(document.getElementById('num1').value);
+            let l = parseInt(document.getElementById('num2').value);
+            let result = 0;
+            switch (o) {
+                case "+":
+                    result = f + l;
+                    break;
+                case "-":
+                    result = f - l;
+                    break;
+                case "*":
+                    result = f * l;
+                    break;
+                case "/":
+                    result = f / l;
+                    break;
+
+                default:
+                    break;
+            }
+            return `${f} ${o} ${l} = ${result.toFixed(2)}`;
+        }
+
+    </script>
+</body>
+
+</html>

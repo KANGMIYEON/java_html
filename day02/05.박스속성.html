@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>박스속성</title>
+    <!--
+        크기속성
+            - 컨텐츠 : 컨텐츠가 없으면 기본이 0
+                width : 가로
+                    - block 태그의 경우 기본 가로는 100% 로 설정되어 있음
+                    - 여기서 100% 는 부모크기 기준 100%
+                    - min-width : 최소한의 가로길이 지정
+                    - max-width : 최대한의 가로길이 지정
+                height : 세로
+                    - 컨텐츠의 높이만큼 자동 지정
+                box-shadow : 수평, 수직, 번짐, 그림크기, 색상, 방향
+    -->
+    <!--
+        테두리 속성
+            - 기본 border : 전체 테두리를 의미
+            - top, bottom, left, right 별도 지정이 가능
+            border : 두께 스타일 색상 ;
+            ex) border-style : solid dotted double solid
+                border-width : 1px 2px 3px 4px
+                시계방향으로 돌아가며 지정 (top-right-bottom-left)
+                값이 2개라면 (위아래-왼쪽오른쪽)
+    -->
+    <!--
+        박스 배경
+            배경색 : background-color
+            배경이미지 : background-image
+            배경이미지 크기 : background-size (가로, 세로 순으로 입력)
+            배경이미지 반복 : background-repeat
+                - no-repeat : 반복없음
+                - repeat-x, -y : x,y축으로 반복
+                - round : x,y축 반복
+            배경이미지 위치 : background-position
+                - x,y 축 순으로
+                - center : 가운데
+            background : color image position repeat
+    -->
+    <style>
+        p{
+            width: 300px;
+            height: 50px;
+            border: 1px solid blue;
+        }
+
+        /* box 가로 300px, 세로 300px 로 설정 */
+        /* 테두리는 1px 검정색 실선, 테두리를 10px만큼 둥글게 처리 */
+        /* 배경색은 아무색이나 채우기 */
+        .box{
+            width: 300px;
+            height: 300px;
+            border: 1px solid black;
+            border-radius: 10px;
+            box-shadow: 5px 5px 5px gray;
+            background-color: mistyrose;
+        }
+        /* box2 border 스타일을 다르게 채우기 */
+        .box2{
+            width: 100px;
+            height: 100px;
+            border: 3px black;
+            border-top-style: dashed;
+            border-bottom-style: dotted;
+            border-left-style: double;
+            border-right-style: groove;
+            border-style: dashed dotted dashed dotted;
+            /* 값을 2개로 지정하면 [위-아래] [왼쪽-오른쪽] 묶여서 지정됨 */
+            border-width: 1px 4px;
+        }
+        /* 가로 300px 세로 300px 배경이미지로 채우기 */
+        .box3{
+            width: 300px;
+            height: 300px;
+            background-image: url(/image/에펠탑.jfif);
+            background-size: 75%;
+        }
+        .box4{
+            width: 300px;
+            height: 300px;
+            background-color: yellow;
+            background-image: url(/image/토끼.jfif);
+            background-size: 100px 100px;
+            background-repeat: no-repeat;
+            background-position: 50px 100px;
+            /* inset 안쪽 outset 바깥쪽 */
+            box-shadow: 5px 5px 5px rgba(112, 206, 112, 0.5) inset;
+        }
+    </style>
+</head>
+<body>
+    <p>
+        안녕하세요. 홍길동입니다!!
+    </p>
+    <div class="box"></div> <br>
+    <div class="box2"></div> <br>
+    <div class="box3"></div> <br>
+    <div class="box4"></div>
+
+    <br><br><br><br><br><br><br>
+</body>
+</html>

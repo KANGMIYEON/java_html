@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!--
+        p-box : 500px 500px 절반 분할 자식박스 2개
+        width: calc(100%/3); => 100% 기준으로 3등분
+    -->
+    <style>
+        .p-box{
+            width: 500px;
+            height: 500px;
+            border: 5px solid black;
+        }
+            .box1{
+                width: calc(100%/3);
+                height: 100%;
+                background-color: pink;
+                float: left;
+            }
+            .box2{
+                width: calc(100%/3);
+                height: 100%;
+                background-color: yellow;
+                float: left;
+            }
+            .box3{
+                width: calc(100%/3);
+                height: 100%;
+                background-color: aqua;
+                float: left;
+            }
+    </style>
+</head>
+<body>
+    <div class="p-box">
+        <div class="box1"></div>
+        <div class="box2"></div>
+        <div class="box3"></div>
+    </div>
+</body>
+</html>

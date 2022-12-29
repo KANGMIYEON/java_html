@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>클래스, 리터럴 객체, 생성자 함수</title>
+</head>
+<body>
+    <h1>
+        클래스, 리터럴 객체, 생성자 함수 통해서 객체를 만들어보자
+        정의할 프로퍼티 : firstName, lastName, age, color
+    </h1>
+    <script>
+        // 클래스 형태
+        class PersonClass{
+            constructor(first, last, age, color){
+                this.firstName = first;
+                this.lastName = last;
+                this.age = age;
+                this.color = color;
+            }
+            get personInfo(){
+                return `${this.firstName}, ${this.lastName}, ${this.age}, ${this.color}`;
+            }
+        }
+        // 리터럴 형태
+        const personObject = {
+            firstName: '',
+            lastName: '',
+            age: 0,
+            color: '',
+            setAllInfo: function(first, last, age, color){
+                this.firstName = first;
+                this.lastName = last;
+                this.age = age;
+                this.color = color;
+            },
+            get personInfo(){
+                return `${this.firstName}, ${this.lastName}, ${this.age}, ${this.color}`;
+            } 
+        }
+
+        // 생성자 함수 ()
+        function PersonObject(first, last, age, color){
+            this.firstName = first;
+            this.lastName = last;
+            this.age = age;
+            this.color = color;
+            this.getPersonInfo = function(){
+                return `${this.firstName}, ${this.lastName}, ${this.age}, ${this.color}`;
+            }
+        }
+
+
+        const myInfo = new PersonObject('miyeon', 'Kang', 28, 'orange');
+        console.log(myInfo);
+
+        /*
+            생성자 함수 () 생성
+                Teacher : name, age, subject
+                function 학생명을 파라미터로 입력받아
+                출력 : 학생에게 과목을 가르칩니다.
+
+                객체 생성 => 출력
+        */
+
+        function Teacher(name, age, subject){
+            this.name = name;
+            this.age = age;
+            this.subject = subject;
+            this.print = function(stuName){
+                return `${this.name} 선생님(${this.age}), ${stuName}에게 ${this.subject}을 가르칩니다.`;
+            }
+        }
+        
+        const t = new Teacher('강미연', 28, '수학');
+        console.log(t.print('시헌'));
+
+    
+    </script>
+</body>
+</html>

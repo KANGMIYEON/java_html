@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #h1{
+            background-color: darkred;
+            color: white
+        }
+    </style>
+</head>
+<body>
+    <h1 id="h1">
+        setInterval(callback function, interval duration)
+        : duration(millisecond)을 주기로 지속적으로 callback function을 실행
+    </h1>
+    <h1>
+        clearInteval(할당객체)로 중지
+    </h1>
+    <button type="button" id="start">start</button>
+    <button type="button" id="finish">finish</button>
+    <h1 id="print"></h1>
+    <script>
+        let intervalObj;
+
+        function changeColor(){
+            intervalObj = setInterval(flashColor, 1000); // flashColor 함수를 1초에 한 번씩 실행
+        }
+
+        function flashColor(){
+            let elem = document.getElementById('h1');
+            elem.style.color = (elem.style.color == 'white' ? 'red' : 'white'); // 현재 컬러가 white면 red로 바꾸고 아니면 white로 바꿔라
+            elem.style.backgroundColor =
+            (elem.style.backgroundColor == 'red' ? 'yellow' : 'red');
+        }
+
+        function stopFlashColor(){
+            clearInterval(intervalObj);
+        }
+
+        document.getElementById('start').addEventListener('click', changeColor);
+        document.getElementById('finish').addEventListener('click', stopFlashColor);
+
+    </script>
+</html>

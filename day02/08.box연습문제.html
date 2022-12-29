@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>box연습문제</title>
+    <!--
+        box1 박스를 클릭하면 naver로 이동하는 버튼
+        button 가운데정렬
+    -->
+    <style>
+        a{
+            text-decoration: none;
+        }
+        .box1{
+            box-sizing: border-box;
+            width: 100px;
+            height: 50px;
+            border: 1px solid black;
+            background-color: darkblue;
+            border-radius: 20px;
+            font-size: 20px;
+            font-family: Arial, Helvetica, sans-serif;
+            text-align: center;
+            color: azure;
+            font-weight: 700;
+            padding-top: 12px;
+            margin: 90px;
+            box-shadow: 5px 5px 5px gray;
+        }
+        .box1:hover{
+            background-color: beige;
+            color: darkblue;
+        }
+    </style>
+</head>
+<body>
+    <a href="//www.naver.com" target="_blank">
+        <div class="box1">button</div>
+    </a>
+</body>
+</html>

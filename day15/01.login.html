@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>password유효성검사</title>
+    <style>
+        body{
+            margin: 0;
+            padding: 0;
+            background-color: darkcyan;
+        }
+
+        .btn-input{
+            font-size: 1em;
+            border: 0px;
+            width: 100%;
+            height: 50px;
+            margin-bottom: 30px;
+            background-color: darkcyan;
+            color: white;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+        .btn-input:hover{
+            background-color: turquoise;
+        }
+
+        .container{
+            width: 300px;
+            position: absolute;
+            margin: 0;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: aliceblue;
+            text-align: center;
+            padding: 20px;
+            border-radius: 5px;
+        }
+
+        input{
+            padding: 10px;
+        }
+
+        .text-field{
+            font-size: 1em;
+            width: 90%;
+            height: 30px;
+            margin-bottom: 10px;
+            border: none;
+            border-radius: 3px;
+        }
+        ins{
+            color: gray;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <form action="">
+            <input type="text" class="text-field" placeholder="아이디">
+            <input type="password" class="text-field" placeholder="비밀번호">
+            <p></p>
+            <input type="submit" value="로그인" class="btn-input" onclick="buttonActivation()">
+            <p><ins>비밀번호를 잊어버리셨나요?</ins></p>
+        </form>
+    </div>
+    <script>
+
+        const btn = document.querySelector('.btn-input');
+        const inputs = document.querySelector('.text-field');
+
+        btn.addEventListener('input',function(){
+
+        });
+
+        // 비밀번호 조합 및 길이 체크 정규식
+        function buttonActivation(){
+            const id = document.querySelector('input[type="text"]').value;
+            const pw = document.querySelector('input[type="password"]').value;
+            const reg = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,16}$/;
+            const number = pw.search(/[0-9]/g);
+            const english = pw.search(/[a-z]/ig);
+            const spece = pw.search(//gi);
+
+        //     if(id == null || pw == null){
+        //         alert("비밀번호를 입력해주세요.");
+        //     }
+
+        //     if(pw.length < 8 || pw.length > 16) {
+        //         alert("8자리~16자리 이내로 입력해주세요.");
+        //         return false;
+        //     } else if()
+
+        //     if(reg.test(pw) == false){
+        //         alert(" 비밀번호는 영문/숫자/특수문자(!@#$%^&*)를 포함하여 8~16자로 입력해야합니다.");
+        //         console.log(reg.test(pw));
+        //     } else{
+        //         console.log(reg.test(pw));
+
+        //     }
+        }
+
+
+    </script>
+</body>
+</html>

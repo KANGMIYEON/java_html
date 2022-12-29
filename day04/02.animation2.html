@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /*
+            animation-timing-duration : 애니메이션 진행속도 (등속)
+            animation-delay : animation 시작전 대기시간
+            animation-direction : 진행방향 (정방향, 역방향...)
+            animation-fill-mode : animation을 마친 후 어떤 상태로 만들지 결정하는 모드
+            animation-play-state : animation을 진행할지 여부 (진행할지 멈출지 설정)
+        */
+
+        /* box를 왼쪽으로 천천히 이동했다가 다시 돌아오는 애니메이션 */
+
+        .box-out{
+            width: 100%;
+            position: relative;
+        }
+
+        .box{
+            animation-name: moveDiv;
+            width: 50px;
+            height: 50px;
+            border: 1px solid black;
+            background-color: thistle;
+            animation-duration: 10s;
+            animation-iteration-count: 3;
+            position: absolute;
+        }
+
+        @keyframes moveDiv{
+            from{
+                left: 0%;
+            }
+            50%{
+                left: 85%;
+            }
+            to{
+                left: 0%;
+            }
+        }
+
+        .box1{
+            width: 50px;
+            height: 50px;
+            border: 1px solid black;
+            background-color: darkcyan;
+            animation: big 3s 3;
+        }
+
+        @keyframes big{
+            0%{
+                width: 50px;
+                height: 50px;
+            }
+            100%{
+                width: 200px;
+                height: 200px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="box-out">
+        <div class="box"></div>
+    </div>
+
+    <br><br><br><br>
+    <div class="box1"></div>
+</body>
+</html>

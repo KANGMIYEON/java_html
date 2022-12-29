@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>upDownGame</title>
+</head>
+<body>
+    <h1>Up Down Game</h1>
+    <ul>
+        <li>
+            랜덤 숫자 만들기 버튼을 클릭하면 컴퓨터 핸덤으로 1~50 사이의 숫자 1개를 생성
+        </li>
+        <li>
+            숫자가 생성되면 '컴퓨터가 랜덤으로 숫자를 생성하였습니다' 라는 안내문구 출력
+        </li>
+        <li>
+            input 창에 숫자를 입력하고 버튼을 클릭하면
+        </li>
+        <li>
+            랜덤수와 체크하여 높은 숫자이면 down, 낮은 숫자이면 up을 출력
+        </li>
+        <li>
+            컴퓨터의 숫자를 맞추면 '정답~! 컴퓨터 숫자는 oo이었습니다.' 문구 출력
+        </li>
+        <li>
+            횟수가 5회가 넘어가면 횟수제한으로 끝~!
+        </li>
+    </ul>
+
+    <h1><button type="button" onclick="randomBtn()">UpDownGame</button></h1>
+    <h3 id="printMsg"></h3>
+
+    <input type="number" id="myCh" max="50" min="1">
+    <h1><button type="button" onclick="checkBtn2()">check</button></h1>
+    <h3 id="resultMsg"></h3>
+
+    <script>
+
+        let rNum = 0; // random수가 지정될 변수
+        let count = 0;
+        
+        function randomBtn(){
+            rNum = Math.floor(Math.random()*50)+1;
+            let str = "컴퓨터가 랜덤으로 숫자를 생성하였습니다. (1~50)";
+            document.getElementById('printMsg').innerText = str;
+            console.log(rNum);
+        }
+
+        function checkBtn(){
+            let myNum = Number(document.getElementById('myCh').value);
+            let message = '';
+
+            // 내가 작성한 것
+            // if(myNum > rNum){
+            //     message = "좀더 아래에용~~~";
+            // }else if(myNum < rNum){
+            //     message = "좀더 위라구요~"
+            // }else{
+            //     message = "정답!!"
+            // }
+
+            // document.getElementById('resultMsg').innerText = message;
+
+
+            // 선생님 풀이
+
+            
+                if(myNum > 0 && myNum < 50){
+                    if(rNum == myNum){
+                        count++;
+                        document.getElementById('resultMsg').innerHTML =
+                        `횟수 ${count} 정답입니다. 컴퓨터의 숫자는 ${rNum}였습니다.`;
+                    } else if(rNum > myNum){
+                        count++;
+                        document.getElementById('resultMsg').innerHTML =
+                        `횟수 ${count} UP!`;
+                    } else {
+                        count++;
+                        document.getElementById('resultMsg').innerHTML =
+                        `횟수 ${count} DOWN!`;
+                    }
+                } else{
+                    document.getElementById('resultMsg').innerHTML =
+                    `1~50 사이의 숫자만 가능합니다.`;
+                }
+         
+        }
+
+        function checkBtn2(){
+            if(count < 5){
+                document.getElementById('resultMsg').innerText =
+                `횟수 ${count+1}: `;
+                count++;
+
+                let myNum = Number(document.getElementById('myCh').value);
+                if(myNum > 0 && myNum <= 50){
+                    // 삼항연산자 : (조건식) ? 참 : 거짓 ;
+                    document.getElementById('resultMsg').innerText =
+                    (rNum == myNum) ? `정답입니다. 컴퓨터 숫자는 ${rNum}입니다.` :
+                    (rNum > myNum) ? `UP` : `DOWN`;
+                } else{
+                    document.getElementById('resultMsg').innerText =
+                    `1~50 사이의 숫자만 가능합니다.`;
+                }
+            } else{ // 횟수가 초과되었을 때
+                document.getElementById('resultMsg').innerText =
+                `시도횟수 ${count}가 초과되었습니다. OUT!`
+            }
+        }
+
+    </script>
+</body>
+</html>

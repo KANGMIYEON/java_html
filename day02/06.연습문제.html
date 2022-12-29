@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>box연습문제</title>
+    <!--
+        가로 300px 세로 300px 박스를 만들고, hello 글자를 입력
+        기울림, 굵게, 크기, 가운데정렬, 밑줄
+        윗줄 가운데 들어갈 수 있게 설정
+        박스의 배경색 지정 -> 마우스 올리면 다른색으로 변경
+    -->
+    <style>
+        .box{
+            box-sizing: border-box;
+            width: 300px;
+            height: 300px;
+            border: 10px solid black; /* 굵기 선모양 색깔 */
+            background-color: beige;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 50px;
+            font-weight: 700;
+            font-style: italic; /* 기울림 */
+            text-align: center; /* text-align : 가운데 정렬 */
+            text-decoration: underline;
+            letter-spacing: 5px; /* letter-spacing : 단어단위로 띄어쓰기 */
+            text-transform: capitalize; /* 첫글자만 대문자로 */
+            /* text-shadow : 좌측으로부터~ px 상단으로부터 px번짐정도 px색상 */
+            text-shadow: 5px 5px 5px gray;
+            /* box-shadow : 좌측으로부터~ px 상단으로부터 px번짐정도 px색상 */
+            box-shadow: 5px 5px 5px gray;
+            border-radius: 20px;
+            padding-top: 100px; /* 위쪽으로부터 여백 */
+        }
+        .box:hover{
+            border-color: red;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">hello</div>
+</body>
+</html>

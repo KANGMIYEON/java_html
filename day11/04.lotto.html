@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>로또 번호 생성</title>
+</head>
+
+<body>
+    <h1>
+        1~45까지 중복되지 않은 숫자 6개가 랜덤으로 추출, 순서대로 출력
+        Set 객체 이용하기
+    </h1>
+    <button type="button" id="makeRandom">랜덤번호 6개 출력</button>
+    <h1 id="printNum"></h1>
+    <button type="button" id="makeRandom2">당첨번호 7개 출력</button>
+    <h1 id="printNum2"></h1>
+    <button type="button" id="lottoResult" onclick="rank()">당첨확인</button>
+    <button type="button" id="reset"" onclick="reset()">리셋</button>
+    <h1 id="printResult"></h1>
+    <script>
+
+        // 랜덤번호 6개 출력
+        document.getElementById('makeRandom').addEventListener('click', function () {
+            const lotto = new Set();
+            while (lotto.size < 6) {
+                lotto.add(Math.floor(Math.random() * 10) + 1);
+            }
+
+            // Set 자체로는 sort 할 수 없음. 배열로 변환 후 sort
+
+            // 방법1.
+            const rNumArr = [];
+            for (const r of lotto) {
+                rNumArr.push(r);
+            }
+            document.getElementById('printNum').innerHTML =
+                rNumArr.sort((a, b) => a - b);
+
+            // // 방법2.
+            // const sortedNumbers = Array.from(lotto).sort((a, b) => a - b);
+            // console.log(sortedNumbers);
+
+            // document.getElementById('printNum').innerHTML = `${sortedNumbers}`;
+        });
+
+        // 랜덤번호 7개 출력
+        document.getElementById('makeRandom2').addEventListener('click', function () {
+            const lotto2 = new Set();
+            while (lotto2.size < 7) {
+                lotto2.add(Math.floor(Math.random() * 10) + 1);
+            }
+
+            const sortedNumbers2 = Array.from(lotto2).sort((a, b) => a - b);
+            console.log(sortedNumbers2);
+
+            for (let i = 0; i < sortedNumbers2.length - 1; i++) {
+                document.getElementById('printNum2').innerText += `${sortedNumbers2[i]}`;
+            }
+            document.getElementById('printNum2').innerHTML = `${sortedNumbers2}`;
+        });
+
+        // 당첨 확인
+
+        // 배열 내용 삭제 : splice(index, count) : index부터 count 개수까지 제거
+        // 배열 내용 삭제 : splice(index, count, item, item) : index부터 count개수까지 제거
+
+        function rank(){
+            let cnt = 0;
+
+            for(const a of rNumArr){
+                for(const b of lotto2){
+                    if(a==b){
+                        cnt++;
+                    }
+                }
+            }
+            
+            let print = '';
+            switch(cnt){
+                case 6: print = '1등'; break;
+                case 5:
+                    for(let i=0; i<lotto.size; i++){
+                        if(lotto[i] == lotto2[lotto2.size]){
+                            print = '2등';
+                        } else {
+                            print = '3등';
+                        }
+                    }
+                    break;
+                case 4: print = '4등'; break;
+                case 3: print = '5등'; break;
+                default: print = '꽝';
+                
+            }
+            document.getElementById('printResult').innerText = print;
+
+        }
+
+        function reset(){
+            rNumArr.splice(0,6);
+            lotto2.splice(0,7);
+            document.getElementById('printNum').innerText = '';
+            document.getElementById('printNum2').innerText = '';
+            document.getElementById('printResult').innerText = '';
+        }
+
+      
+
+    </script>
+</body>
+
+</html>

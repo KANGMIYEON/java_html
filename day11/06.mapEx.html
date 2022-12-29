@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        tr, th, td{
+            border: 1px solid black;
+            width: 100px;
+            height: 20px;
+            border-collapse: collapse;
+            text-align: center;
+        }
+        table{
+
+            border-collapse: collapse;
+        }
+        </style>
+</head>
+<body>
+    <h1>
+        Q1. 데이터를 입력할 인원수를 입력받고, 각 개인의 html, css, js 과목의 점수를 입력하면 각 과목의 점수, 총점, 평균을 html의 table 태그에 출력하기
+    </h1>
+    <p>
+        인원수: <input type="text" id="peopleNum"> <button id="peopleBtn" onclick="showBox()">실행</button>
+    </p>
+    <div class="inputArea"></div>
+    <button id="sbmBtn" onclick="makeTable()">제출</button>
+    <div class="printArea">
+        <table id="printTable">
+
+    </div>
+    <script>
+        let num=0;
+        function showBox(){
+            num = parseInt(document.getElementById('peopleNum').value);
+            console.log(num);
+            for(let i=1; i<=num; i++){
+                document.querySelector('.inputArea').innerHTML +=
+                `이름: <input type="text" id="name${i}">, html: <input type="text" id="html${i}">, css: <input type="text" id="css${i}">, js: <input type="text" id="js${i}"> <br>`;
+            }
+        }
+        
+        
+        function makeTable(){
+            document.querySelector('#printTable').innerHTML = 
+            `<tr><th>이름</th><th>html</th><th>css</th><th>js</th><th>총점</th><th>평균</th><th>등급</th></tr>
+        </table>`;
+            let name = '', grade = '';
+            let html = 0, css = 0, js = 0;
+            for(let i=1; i<=num; i++){
+                let sum = 0;
+                let avg = 0;
+                name=document.getElementById(`name${i}`).value;
+                html=parseInt(document.getElementById(`html${i}`).value);
+                css=parseInt(document.getElementById(`css${i}`).value);
+                js=parseInt(document.getElementById(`js${i}`).value);
+                sum += html + css + js;
+                avg = (sum/3).toFixed(2);
+                if(avg>=90){
+                    grade = 'A';
+                } else if(avg>=80){
+                    grade = 'B';
+                } else if(avg>=70){
+                    grade = 'C';
+                } else if(avg>=60){
+                    grade = 'D';
+                } else{
+                    grade = 'F';
+                }
+                document.querySelector('#printTable').innerHTML+=`<tr><td>${name}</td><td>${html}</td><td>${css}</td><td>${js}</td><td>${sum}</td><td>${avg}</td><td>${grade}</td></tr>`;
+            }
+        }
+
+    </script>
+</body>
+</html>

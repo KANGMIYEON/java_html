@@ -1,0 +1,33 @@
+body{
+    text-align: center;
+}
+
+h1{
+    border: 5px solid black;
+    width: 30%;
+    height: 50px;
+    margin: 30px auto;
+}
+
+ul{
+    border: 1px dashed red;
+    list-style: none;
+    width: 50%;
+    margin: 10% auto;
+}
+
+li{
+    display: inline;
+    /* 위아래 / 왼쪽오른쪽 */
+    margin: 0px 10px;
+}
+
+img{
+    margin-top: 30px;
+    width: 50%;
+}
+
+a{
+    text-decoration: none;
+}
+

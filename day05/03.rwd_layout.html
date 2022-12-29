@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style> /*중간*/
+        *{
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        div{
+            width: 100%;
+        }
+        .header{
+            height: 60px;
+            background-color: black;
+        }
+        .main-img{
+            height: 300px;
+            background-color: blue;
+        }
+        .description{
+            height: 300px;
+            background-color: beige;
+        }
+        .sub-img1{
+            height: 350px;
+            background-color: aqua;
+        }
+        .sub-img2{
+            height: 200px;
+            background-color: violet;
+        }
+        .sub-img3{
+            height: 200px;
+            background-color: thistle;
+        }
+
+        @media screen and (min-width: 1200px){ /*최대*/
+            .main-img{
+                width: 40%;
+                height: 700px;
+                float: left;
+            }
+            .description{
+                width: 60%;
+                float: right;
+            }
+            .sub-img1{
+                width: 30%;
+                height: 400px;
+                float: left;
+            }
+            .sub-img2{
+                width: 30%;
+                float: right;
+            }
+            .sub-img3{
+                width: 30%;
+                float: right;
+            }
+        }
+
+        @media screen and (max-width: 720px){/*최소*/
+            .sub-img1{
+                height: 400px;
+                width: 50%;
+                float: left;
+            }
+            .sub-img2{
+                width: 50%;
+                float: right;
+            }
+            .sub-img3{
+                width: 50%;
+                float: right;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <div class="header"></div>
+    <div class="main-img"></div>
+    <div class="description">
+        <div>
+            <p>Portfolio</p>
+            <p>Make Hardware Soft</p>
+            <p>
+                The standard chunk of lorem Ipsum used since the 1500s
+                is reproduced below for those interested.
+                Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum
+                et Malorum" by Cicero are also
+            </p>
+        </div>
+    </div>
+    <div class="sub-img1"></div>
+    <div class="sub-img2">
+        <a href="#">VIEW MORE</a>
+    </div>
+    <div class="sub-img3"></div>
+</body>
+</html>

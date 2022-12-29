@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>숫자야구게임</title>
+</head>
+
+<body>
+    <h1>
+        컴퓨터가 0 ~ 9의 중복되지 않는 정수 3개를 랜덤으로 출제하면 맞추는 게임
+    </h1>
+    <h3> 게임 규칙 </h3>
+    <li>
+        세자리의 숫자는 각 자리수를 갖고 서로 중복되지 않는다
+    </li>
+    <li>
+        각 자리수와 입력한 숫자의 자리수가 동일하면 1 Strike(스트라이크)
+    </li>
+    <li>
+        입력한 숫자가 포함되어 있으나 자리수가 동일하지 않으면 1 Ball(볼)
+    </li>
+    <li>
+        입력한 숫자가 전혀 포함되어 있지 않으면 Out(아웃)
+    </li>
+    <li>
+        3 스트라이크면 1게임 종료
+    </li>
+    <li>
+        플레이 예시 <br>
+        com숫자(4,2,9) > user숫자(4,1,7) > 1S <br>
+        com숫자(4,2,9) > user숫자(4,9,1) > 1S 1B <br>
+        com숫자(4,2,9) > user숫자(7,4,2) > 2B <br>
+        com숫자(4,2,9) > user숫자(3,8,1) > OUT <br>
+    </li>
+    </ul>
+    <hr>
+    <button type="button" id="startBtn">게임 시작</button>
+    <h1 id="comMsg"></h1>
+    숫자 추측하기 : <input type="text" id="user">
+    <button type="button" id="checkBtn">추측 확인</button>
+    <h1 id="checkMsg"></h1>
+    <script>
+
+        const comSet = new Set();
+        let comArr = [];
+        document.querySelector('#startBtn').addEventListener('click', function () {
+            while (comSet.size < 3) {
+                let r = Math.floor(Math.random() * 9);
+                comSet.add(r);
+            }
+            for (const c of comSet) {
+                comArr.push(c);
+            }
+            console.log(comArr);
+            document.getElementById('comMsg').innerText = `컴퓨터가 세자리 숫자를 생성했습니다!`;
+        });
+
+        const userArr = [];
+        document.querySelector('#checkBtn').addEventListener('click', function () {
+            let strike = 0, ball = 0;
+            const userNum = document.getElementById('user').value;
+            userArr.push(Number(userNum.charAt(0)));
+            userArr.push(Number(userNum.charAt(1)));
+            userArr.push(Number(userNum.charAt(2)));
+            console.log(userArr);
+
+        //     while (let i = 0; i < 3; i++){
+        //     if (comArr[i] == userArr[i]) {
+
+        //     }
+        // }
+            
+
+            
+
+       
+            
+        });
+    </script>
+</body>
+
+</html>

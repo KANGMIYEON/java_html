@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>데이터 순환</title>
+</head>
+<body>
+    <h1>
+        주어진 데이터를 순환하여 원하는 조건에 맞는 정보를 추출
+    </h1>
+    <ol>
+        <li>
+            데이터의 환율 자료에서 통화이름만 가져와 새로운 배열에 출력
+        </li>
+        <li>
+            환율의 각 통화 변화율 중 가장 큰 변화를 보인 객체의 정보 출력
+        </li>
+        <li>
+            금시세의 포인트 정보를 분석하여 전일(yesterday)의 포인트값을 추정하여 출력
+        </li>
+    </ol>
+    <script src="06.exchange.js"></script>
+    <script>
+
+        // 데이터의 환율 자료에서 통화이름만 가져와 새로운 배열에 출력
+        const valueArr = [];
+        top1.exchanges.forEach((e, i, arr) => {
+            // e 값은 object
+            valueArr.push(e.name);
+        });
+        console.log(valueArr);
+
+        // 환율의 각 통화 변화율 중 가장 큰 변화를 보인 객체의 정보 출력
+        const valueArr2 = [];
+        top1.exchanges.forEach((e, i, arr) =>{
+            let u = Math.abs(e.updown);
+            valueArr2.push(u);
+        });
+        const max = Math.max.apply(null, valueArr2);
+        console.log(max);
+
+        // 금시세의 포인트 정보를 분석하여 전일(yesterday)의 포인트값을 추정하여 출력
+        const valueArr3 = [];
+        top1.gold.forEach((e, i, arr) =>{
+            if(e.price[i] == e.ratio[i]){
+                e.price = e.price - e.ratio;
+            }
+            valueArr3.push(e.price);
+        });
+        console.log(valueArr3);
+       
+    </script>
+    
+</body>
+</html>

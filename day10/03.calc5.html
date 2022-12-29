@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>culc3</title>
+    </head>
+    <body>
+        <h1>계산기</h1>
+        <h3 id="window"></h3>
+        <div id="numContainer">
+            <button tyoe="button" value="1">1</button>
+            <button tyoe="button" value="2">2</button>
+            <button tyoe="button" value="3">3</button>
+            <button type="button" value="+">+</button><br />
+            <button tyoe="button" value="4">4</button>
+            <button tyoe="button" value="5">5</button>
+            <button tyoe="button" value="6">6</button>
+            <button type="button" value="-">-</button><br />
+            <button tyoe="button" value="7">7</button>
+            <button tyoe="button" value="8">8</button>
+            <button tyoe="button" value="9">9</button>
+            <button type="button" value="*">x</button><br />
+            <button tyoe="button" value="0" class="bottom">0</button>
+            <button tyoe="button" value=".">.</button>
+            <button type="button" value="/">/</button><br />
+        </div>
+        <button type="button" value="=" id="equal">=</button>
+        <script>
+            let str = "";
+            document.querySelector("#numContainer").addEventListener("click", function (e) {
+                let c = e.target.value;
+                if (typeof c != "undefined") {
+                    if (!isNaN(c) || c == ".") {
+                        if (!str.includes("=")) {
+                            str += c;
+                        } else {
+                            str = c;
+                        }
+                    } else {
+                        str += ` ${c} `;
+                    }
+                }
+                document.getElementById("window").innerHTML = str;
+            });
+            document.querySelector("#equal").addEventListener("click", function (e) {
+                let num1 = Number(str.substring(0, str.indexOf(" ")));
+                let num2 = Number(str.substring(str.lastIndexOf(" ")));
+                switch (str.substring(str.indexOf(" ") + 1, str.lastIndexOf(" "))) {
+                    case "+":
+                        str += ` = ${num1 + num2}`;
+                        break;
+                    case "-":
+                        str += ` = ${num1 - num2}`;
+                        break;
+                    case "*":
+                        str += ` = ${num1 * num2}`;
+                        break;
+                    case "/":
+                        str += ` = ${num1 / num2}`;
+                        break;
+                }
+                document.getElementById("window").innerHTML = str;
+            });
+        </script>
+    </body>
+</html>

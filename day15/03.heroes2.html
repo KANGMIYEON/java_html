@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our superheroes2</title>
+</head>
+
+<body>
+    <header></header>
+    <section></section>
+
+    <script>
+        let header = document.querySelector('header');
+        let section = document.querySelector('section');
+
+        fetch('https://mdn.github.io/learning-area/javascript/oojs/json/superheroes.json')
+            .then(resp => resp.json())
+            .then(json => populateHeader(json)) // json은 object가 된다!
+
+        function populateHeader(jsonObj){
+            let myH1 = document.createElement('h1');
+            myH1.innerText = jsonObj['squadName'];
+            header.appendChild(myH1);
+
+            let myPara = document.createElement('p');
+            myPara.innerText = 'Hometown: ' + jsonObj['hometown'] + ' // Formed: ' + jsonObj['formed'];
+            header.appendChild(myPara);
+        }
+    </script>
+</body>
+
+</html>

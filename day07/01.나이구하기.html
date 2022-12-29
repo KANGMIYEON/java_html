@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>나이구하기</title>
+</head>
+<body>
+    <!--
+        input을 이용하여 이름, 주민등록번호를 입력받아
+        이름, 생년월일, 성별을 출력     
+    -->
+    <form action="">
+        <fieldset>
+           <legend>개인정보</legend> 
+               이름 : <input type="text" id="name"> <br>
+               주민등록번호 : <input type="text" id="idNum"> <br>
+               <button type="button" onclick="print()">입력</button>
+        </fieldset>
+    </form>
+    <h3 id="result"></h3>
+    <script>
+        let date = new Date();
+        console.log(date);
+        console.log(date.getFullYear());
+        console.log(date.getMonth()+1); // +1 해줘야 현재 월 추출 가능
+        console.log(date.getDate());
+
+        let date1 = date.getFullYear()+'년 '+(date.getMonth()+1)+'월 '+date.getDate()+'일';
+        console.log(date1);
+
+        function print(){
+            let name = document.getElementById("name").value;
+            let idNum = document.getElementById("idNum").value;
+
+            //오늘날짜 / 시간
+            /* 
+                < get : 값 얻어 올 때 , set 값 변경 할 때 >
+                    getFullYear() : 년도추출
+                    getMonth() : 월 0~11로 나옴 +1 해서 현재 월 추출해야 함
+                    getDate() : 일
+                    getDay() : 요일 0~6 일~토
+                    getHours()
+                    getMinutes()
+                    getSecond()
+                    getMilliseconds() : 밀리초
+                    getTime() : 시간
+            */
+            let now1 = new Date();
+            let now2 = new Date(2001,10,10,12,00);
+            let now3 = new Date('2001-01-01');
+            console.log(now1);
+            
+            let gender = idNum.slice(7,8) == 1 || idNum.slice(7,8) == 3 ? "남자" : "여자";
+            if(idNum.slice(7,8) > 4){
+                alert("잘못된 입력입니다.");
+                return;
+            }
+            let birth = idNum.slice(0,6);
+            
+            let birth2 = parseInt(idNum.slice(0,2))+1899;
+            if(idNum.slice(7,8) >= 3){
+                birth2 = parseInt(idNum.slice(0,2))+1999;
+            }
+            let age = date.getFullYear()-birth2;
+            
+            
+            document.getElementById("result").innerText =
+            `이름 : ${name}, 나이 : ${age}, 생년월일 : ${birth}, 성별 : ${gender}`;
+        }
+    </script>
+
+</body>
+</html>

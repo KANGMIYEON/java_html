@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>구구단</title>
+</head>
+<body>
+    <!--
+        2x1=2 3x1=3 ....................................... 9x1=9
+        2x2=4
+        .
+        .
+        .
+        2x9
+        2x9=18 3x9=27 ....................................... 9x9=81
+    -->
+    <button type="button" onclick="gugudan()">구구단</button>
+    <div id="gugu"></div>
+    <script>
+        function gugudan(){
+            let str = '<table>';
+                let incre = 1; // 1~9 증가하는 뒷쪽값
+                while(incre < 10){
+                    let line = '<tr>';
+                    let dan = 2;
+                    while(dan < 10){ // 단이 10보다 작으면 반복
+                        line += `<td width="100px"> ${dan}×${incre}=${dan*incre} </td>`;
+                        dan++; // 단 증가
+                    }
+                    incre++; // 증가
+                    str += `${line}</tr>`; // 한줄 누적
+                }
+                str += '</table>';
+                document.getElementById('gugu').innerHTML = str;
+        }
+    </script>
+</body>
+</html>
